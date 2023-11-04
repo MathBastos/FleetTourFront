@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { LoginModel } from './model/login.model';
 import { LoginService } from './service/login.service';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,6 @@ export class LoginComponent {
   entrar() {
     console.log(this.login.value);
     console.log(this.senha.value);
-
 
     let login = new LoginModel();
     login.login = this.login.value?.toString();
