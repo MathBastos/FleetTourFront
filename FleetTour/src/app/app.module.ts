@@ -29,6 +29,7 @@ import { IndexClienteComponent } from './index-cliente/index-cliente.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.component';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -63,7 +64,8 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
     MatFormFieldModule,
     NgIf,
     NgFor,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
