@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../model/login.model';
 import { HttpClient } from '@angular/common/http';
-import * as bcrypt from 'bcryptjs';
+
 
 
 @Injectable({
@@ -15,10 +15,10 @@ export class LoginService {
 
   entrar(login: LoginModel) {
 
-    var senha = "{bcrypt}";
+    var senha = login.senha;
 
     if (login.senha) 
-    senha += bcrypt.hashSync(login.senha, "$2b$06$C6UzMDM.H6dfI/f/IKxGhu");
+    senha += login.senha;
 
     const payload = {login: login.login, senha: senha};
 

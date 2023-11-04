@@ -12,6 +12,12 @@
         <mat-label>CPF</mat-label>
         <input matInput placeholder="CPF" [formControl]="cpf">
 
+        <mat-label>RG</mat-label>
+        <input matInput placeholder="RG" [formControl]="rg">
+
+        <mat-label>Orgao Emissor</mat-label>
+        <input matInput placeholder="Orgao Emissor" [formControl]="orgaoEmissor">
+
         <!-- Data de Nascimento-->
         <mat-label>Data de nascimento</mat-label>
         <div>
@@ -24,6 +30,26 @@
         <mat-label>Telefone</mat-label>
         <input matInput placeholder="Telefone" [formControl]="telefone">
 
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="Email" [formControl]="email">
+
+        <mat-label>cep</mat-label>
+        <input matInput placeholder="cep" [formControl]="cep">
+        <mat-label>rua</mat-label>
+        <input matInput placeholder="rua" [formControl]="rua">
+        <mat-label>bairro</mat-label>
+        <input matInput placeholder="bairro" [formControl]="bairro">
+        <mat-label>numero</mat-label>
+        <input matInput placeholder="numero" [formControl]="numero">
+        <mat-label>complemento</mat-label>
+        <input matInput placeholder="complemento" [formControl]="complemento">
+        <mat-label>estado</mat-label>
+        <input matInput placeholder="estado" [formControl]="estado">
+        <mat-label>cidade</mat-label>
+        <input matInput placeholder="cidade" [formControl]="cidade">
+        <mat-label>pais</mat-label>
+        <input matInput placeholder="pais" [formControl]="pais">
+        
 
         <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
     </form>

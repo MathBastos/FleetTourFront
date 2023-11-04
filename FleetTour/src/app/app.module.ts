@@ -30,6 +30,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.component';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ViagemComponent } from './viagem/viagem.component';
 
 
 
@@ -46,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClienteComponent,
     CadastroOnibusComponent,
     CadastroClienteComponent,
+    ViagemComponent,
   ],
   imports: [
     MatListModule,

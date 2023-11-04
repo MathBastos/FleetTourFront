@@ -10,6 +10,7 @@ import { IndexOnibusComponent } from './index-onibus/index-onibus.component';
 import { IndexClienteComponent } from './index-cliente/index-cliente.component';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.component';
+import { ViagemComponent } from './viagem/viagem.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'indexCliente', component: IndexClienteComponent},
       { path: 'cadastroCliente', component: CadastroClienteComponent},
       { path: 'cadastroOnibus', component: CadastroOnibusComponent },
+      { path: 'viagem', component: ViagemComponent },
     ]
   }
 ];

@@ -1,0 +1,50 @@
+<div class="div_botao">
+    <button mat-raised-button type="button" routerLink="/indexOnibus">Voltar</button>
+</div>
+<div class="div_body">
+    <form class="example-form" id="form">
+        <h1>Cadastro Onibus</h1>
+
+        <mat-label>Data Viagem</mat-label>
+        <div>
+            <input matInput [matDatepicker]="picker" [formControl]="dt_nascimento">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
+
+        <mat-label>Horario saida</mat-label>
+        <input matInput placeholder="Renavam" [formControl]="renavam">
+
+        <mat-label>Horario chegada</mat-label>
+        <input matInput placeholder="Ano" [formControl]="ano">
+
+        <mat-label>Origem</mat-label>
+        <input matInput placeholder="Quilometragem" [formControl]="quilometragem">
+
+        <mat-label>Destino</mat-label>
+        <input matInput placeholder="Cod Frota" [formControl]="codFrota">
+
+        <mat-label>Quilometragem</mat-label>
+        <input matInput placeholder="Capacidade" [formControl]="capacidade">
+
+        <mat-label>Valor</mat-label>
+        <input matInput placeholder="TAF" [formControl]="taf">
+
+        <mat-label>NFe</mat-label>
+        <input matInput placeholder="Ref Estadual" [formControl]="refEstadual">
+
+        <mat-label>Valor NFe</mat-label>
+        <input matInput placeholder="Ref Estadual" [formControl]="refEstadual">
+
+        <mat-label>Observação</mat-label>
+        <input matInput placeholder="Ultima Vistoria" [formControl]="ultimaVistoria">
+
+        <mat-label>Veiculo</mat-label>
+        <input matInput placeholder="Seguro" [formControl]="seguro">
+
+        <mat-label>Passageiros</mat-label>
+        <input matInput placeholder="Licensiamanto Antt" [formControl]="licensiamantoAntt">
+
+        <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
+    </form>
+</div>
