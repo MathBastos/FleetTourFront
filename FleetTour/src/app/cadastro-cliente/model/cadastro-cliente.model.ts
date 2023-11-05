@@ -14,5 +14,4 @@ export class CadastroClienteModel {
     complemento?: string;
     estado?: string;
     cidade?: string;
-    pais?: string;
 }

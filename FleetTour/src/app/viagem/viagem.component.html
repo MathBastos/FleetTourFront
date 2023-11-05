@@ -1,50 +1,58 @@
 <div class="div_botao">
-    <button mat-raised-button type="button" routerLink="/indexOnibus">Voltar</button>
+    <button mat-raised-button type="button" routerLink="/index">Voltar</button>
 </div>
 <div class="div_body">
     <form class="example-form" id="form">
         <h1>Cadastro Onibus</h1>
+        <table>
+            <tr>
+                <td>
+                    <mat-label>Data Viagem</mat-label>
+                    <div>
+                        <input matInput placeholder="Data Viagem" [matDatepicker]="picker" [formControl]="dataViagem">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
 
-        <mat-label>Data Viagem</mat-label>
-        <div>
-            <input matInput [matDatepicker]="picker" [formControl]="dt_nascimento">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </div>
+                    <mat-label>Horario saida</mat-label><br>
+                    <input matInput placeholder="Hora Saída" [formControl]="horaSaida"><br>
 
-        <mat-label>Horario saida</mat-label>
-        <input matInput placeholder="Renavam" [formControl]="renavam">
+                    <mat-label>Horario chegada</mat-label><br>
+                    <input matInput placeholder="Hora Chegada" [formControl]="horaChegada"><br>
 
-        <mat-label>Horario chegada</mat-label>
-        <input matInput placeholder="Ano" [formControl]="ano">
+                    <mat-label>Origem</mat-label><br>
+                    <input matInput placeholder="Origem" [formControl]="origem"><br>
 
-        <mat-label>Origem</mat-label>
-        <input matInput placeholder="Quilometragem" [formControl]="quilometragem">
+                    <mat-label>Destino</mat-label><br>
+                    <input matInput placeholder="Destino" [formControl]="destino"><br>
 
-        <mat-label>Destino</mat-label>
-        <input matInput placeholder="Cod Frota" [formControl]="codFrota">
+                    <mat-label>Quilometragem</mat-label><br>
+                    <input matInput placeholder="Quilometragem" [formControl]="km"><br>
+                </td>
+                <td>
+                    <mat-label>Valor</mat-label><br>
+                    <input matInput placeholder="Valor" [formControl]="valor"><br>
 
-        <mat-label>Quilometragem</mat-label>
-        <input matInput placeholder="Capacidade" [formControl]="capacidade">
+                    <mat-label>NFe</mat-label><br>
+                    <input matInput placeholder="NFe" [formControl]="nfe"><br>
 
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="TAF" [formControl]="taf">
+                    <mat-label>Valor NFe</mat-label><br>
+                    <input matInput placeholder="Valor NFe" [formControl]="valorNfe"><br>
 
-        <mat-label>NFe</mat-label>
-        <input matInput placeholder="Ref Estadual" [formControl]="refEstadual">
+                    <mat-label>Observação</mat-label><br>
+                    <input matInput placeholder="Observação" [formControl]="observacao"><br>
 
-        <mat-label>Valor NFe</mat-label>
-        <input matInput placeholder="Ref Estadual" [formControl]="refEstadual">
+                    <mat-label>Veículo</mat-label><br>
+                    <input matInput placeholder="Veículo" [formControl]="veiculo"><br>
 
-        <mat-label>Observação</mat-label>
-        <input matInput placeholder="Ultima Vistoria" [formControl]="ultimaVistoria">
+                    <mat-label>Passageiros</mat-label><br>
+                    <input matInput placeholder="Passageiros" [formControl]="passageiros"><br>
 
-        <mat-label>Veiculo</mat-label>
-        <input matInput placeholder="Seguro" [formControl]="seguro">
-
-        <mat-label>Passageiros</mat-label>
-        <input matInput placeholder="Licensiamanto Antt" [formControl]="licensiamantoAntt">
-
+                    
+                </td>
+                   
+            </tr>
+        </table>
         <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
-    </form>
+    </form> 
 </div>

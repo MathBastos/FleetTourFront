@@ -43,10 +43,10 @@ export class CadastroOnibusComponent {
   seguro = new FormControl('',
     [Validators.required]);
 
-  licensiamantoAntt = new FormControl('',
+  licenciamentoAntt = new FormControl('',
     [Validators.required]);
 
-  licensiamentoDer = new FormControl('',
+  licenciamentoDer = new FormControl('',
     [Validators.required]);
 
   salvar() {
@@ -60,8 +60,8 @@ export class CadastroOnibusComponent {
     console.log(this.refEstadual.value);
     console.log(this.ultimaVistoria.value);
     console.log(this.seguro.value);
-    console.log(this.licensiamantoAntt.value);
-    console.log(this.licensiamentoDer.value);
+    console.log(this.licenciamentoAntt.value);
+    console.log(this.licenciamentoDer.value);
     
     let onibus = new CadastroOnibusModel();
     onibus.placa = this.placa.value?.toString();
@@ -74,8 +74,8 @@ export class CadastroOnibusComponent {
     onibus.refEstadual = this.refEstadual.value?.toString();
     onibus.ultimaVistoria = this.ultimaVistoria.value?.toString();
     onibus.seguro = this.seguro.value?.toString();
-    onibus.licensiamantoAntt = this.licensiamantoAntt.value?.toString();
-    onibus.licensiamentoDer = this.licensiamentoDer.value?.toString();
+    onibus.licenciamentoAntt = this.licenciamentoAntt.value?.toString();
+    onibus.licenciamentoDer = this.licenciamentoDer.value?.toString();
 
     this.cadastroOnibusService.salvar(onibus);
   }

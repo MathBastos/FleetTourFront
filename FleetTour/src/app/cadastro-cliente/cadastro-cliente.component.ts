@@ -35,19 +35,23 @@ export class CadastroClienteComponent {
 
   cep = new FormControl('',
     [Validators.required]);
+
   rua = new FormControl('',
     [Validators.required]);
+
   bairro = new FormControl('',
     [Validators.required]);
+
   numero = new FormControl('',
     [Validators.required]);
+
   complemento = new FormControl('',
     [Validators.required]);
+
   estado = new FormControl('',
     [Validators.required]);
+
   cidade = new FormControl('',
-    [Validators.required]);
-  pais = new FormControl('',
     [Validators.required]);
 
   salvar() {
@@ -73,7 +77,7 @@ export class CadastroClienteComponent {
     cliente.complemento = this.complemento.value?.toString();
     cliente.estado = this.estado.value?.toString();
     cliente.cidade = this.cidade.value?.toString();
-    cliente.pais = this.pais.value?.toString();
+
 
     this.cadastroClienteService.salvar(cliente);
   }

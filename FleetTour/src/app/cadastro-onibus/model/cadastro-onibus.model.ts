@@ -9,6 +9,6 @@ export class CadastroOnibusModel {
     refEstadual?:string;
     ultimaVistoria?:string;
     seguro?:string;
-    licensiamantoAntt?:string;
-    licensiamentoDer?:string;
+    licenciamentoAntt?:string;
+    licenciamentoDer?:string;
 }

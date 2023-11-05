@@ -7,7 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .example-form {
     min-width: 150px;
-    max-width: 500px;
+    max-width: 1000px;
     width: 100%;
   }
   

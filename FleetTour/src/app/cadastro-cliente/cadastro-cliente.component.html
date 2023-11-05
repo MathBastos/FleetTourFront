@@ -4,53 +4,59 @@
 <div class="div_body">
     <form class="example-form" id="form">
         <h1>Cadastro Cliente</h1>
-        <!-- Nome -->
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome" [formControl]="nome">
+        <table>
+            <tr>
+                <td>
+                    <mat-label>Nome</mat-label><br>
+                    <input matInput placeholder="Nome" [formControl]="nome"><br>
 
-        <!-- CPF -->
-        <mat-label>CPF</mat-label>
-        <input matInput placeholder="CPF" [formControl]="cpf">
+                    <mat-label>CPF</mat-label><br>
+                    <input matInput placeholder="CPF" [formControl]="cpf"><br>
 
-        <mat-label>RG</mat-label>
-        <input matInput placeholder="RG" [formControl]="rg">
+                    <mat-label>RG</mat-label><br>
+                    <input matInput placeholder="RG" [formControl]="rg"><br>
 
-        <mat-label>Orgao Emissor</mat-label>
-        <input matInput placeholder="Orgao Emissor" [formControl]="orgaoEmissor">
+                    <mat-label>Orgão Emissor</mat-label><br>
+                    <input matInput placeholder="Orgão Emissor" [formControl]="orgaoEmissor"><br>
 
-        <!-- Data de Nascimento-->
-        <mat-label>Data de nascimento</mat-label>
-        <div>
-            <input matInput [matDatepicker]="picker" [formControl]="dt_nascimento">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </div>
+                    <mat-label>Data de nascimento</mat-label><br>
+                    <div>
+                        <input matInput placeholder="Data de nascimento" [matDatepicker]="picker" [formControl]="dt_nascimento">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
 
-        <!-- Telefone -->
-        <mat-label>Telefone</mat-label>
-        <input matInput placeholder="Telefone" [formControl]="telefone">
+                    <mat-label>Telefone</mat-label><br>
+                    <input matInput placeholder="Telefone" [formControl]="telefone"><br>
 
-        <mat-label>E-mail</mat-label>
-        <input matInput placeholder="Email" [formControl]="email">
+                    <mat-label>E-mail</mat-label><br>
+                    <input matInput placeholder="Email" [formControl]="email"><br>
+                </td>
+                <td>
+                    <mat-label>CEP</mat-label><br>
+                    <input matInput placeholder="CEP" [formControl]="cep"><br>
 
-        <mat-label>cep</mat-label>
-        <input matInput placeholder="cep" [formControl]="cep">
-        <mat-label>rua</mat-label>
-        <input matInput placeholder="rua" [formControl]="rua">
-        <mat-label>bairro</mat-label>
-        <input matInput placeholder="bairro" [formControl]="bairro">
-        <mat-label>numero</mat-label>
-        <input matInput placeholder="numero" [formControl]="numero">
-        <mat-label>complemento</mat-label>
-        <input matInput placeholder="complemento" [formControl]="complemento">
-        <mat-label>estado</mat-label>
-        <input matInput placeholder="estado" [formControl]="estado">
-        <mat-label>cidade</mat-label>
-        <input matInput placeholder="cidade" [formControl]="cidade">
-        <mat-label>pais</mat-label>
-        <input matInput placeholder="pais" [formControl]="pais">
-        
+                    <mat-label>Rua</mat-label><br>
+                    <input matInput placeholder="Rua" [formControl]="rua"><br>
 
+                    <mat-label>Bairro</mat-label><br>
+                    <input matInput placeholder="Bairro" [formControl]="bairro"><br>
+
+                    <mat-label>Número</mat-label><br>
+                    <input matInput placeholder="Número" [formControl]="numero"><br>
+
+                    <mat-label>Complemento</mat-label><br>
+                    <input matInput placeholder="Complemento" [formControl]="complemento"><br>
+
+                    <mat-label>Estado</mat-label><br>
+                    <input matInput placeholder="Estado" [formControl]="estado"><br>
+
+                    <mat-label>Cidade</mat-label><br>
+                    <input matInput placeholder="Cidade" [formControl]="cidade"><br>
+
+                </td>
+            </tr>
+        </table>
         <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
     </form>
 </div>
