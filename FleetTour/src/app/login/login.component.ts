@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { LoginModel } from './model/login.model';
 import { LoginService } from './service/login.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) {}
+  constructor(private http: HttpClient, private router:Router) { }
 
   login = new FormControl('',
     [Validators.required]);
@@ -22,13 +22,23 @@ export class LoginComponent {
 
 
   entrar() {
-    console.log(this.login.value);
-    console.log(this.senha.value);
 
-    let login = new LoginModel();
-    login.login = this.login.value?.toString();
-    login.senha = this.senha.value?.toString();
+    const payload = {login: this.login.value, senha: this.senha.value};
 
-    this.loginService.entrar(login);
+    console.log("payload -> \nlogin: ", payload.login, "\nsenha: ", payload.senha);
+
+    const url = 'https://www.fleettour.com.br/rest/auth/login';
+
+    this.http.post<LoginModel>(url, payload, { observe: 'response' }).subscribe(response => {
+      if (response.status === 200) {
+        console.log("response -> ", response);
+        console.log("response.body.token -> ", response.body?.token);
+        localStorage.setItem('token', response.body?.token ?? '');
+        this.router.navigate(['/index']);
+      }
+      else {
+        alert("Usuário ou senha inválidos!");
+      }
+    });
   }
 }
