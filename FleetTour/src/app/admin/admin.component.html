@@ -1,0 +1,23 @@
+<div class="div_botao">
+    <button mat-raised-button routerLink="/login">Voltar</button>
+</div>
+<div class="div_body">
+    <div class="div_table">
+        <table class="mat-elevation-z8 demo-table">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Login</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+                <tr *ngFor="let dado of dados">
+                    <td>{{dado.nome}}</td>
+                    <td>{{dado.cpf}}</td>
+                    <td>{{dado.login}}</td>
+                    <td><mat-icon>edit</mat-icon></td>
+                    <td><mat-icon>delete_forever</mat-icon></td>
+                </tr>
+        </table>
+    </div>
+</div>

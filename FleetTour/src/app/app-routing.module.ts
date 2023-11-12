@@ -11,7 +11,7 @@ import { IndexClienteComponent } from './index-cliente/index-cliente.component';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.component';
 import { ViagemComponent } from './viagem/viagem.component';
-
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -30,6 +30,7 @@ const routes: Routes = [
       { path: 'cadastroCliente', component: CadastroClienteComponent},
       { path: 'cadastroOnibus', component: CadastroOnibusComponent },
       { path: 'viagem', component: ViagemComponent },
+      { path: 'admin', component: AdminComponent },
     ]
   }
 ];

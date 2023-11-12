@@ -23,8 +23,6 @@ export class LoginService {
 
     console.log("url -> ", url);
 
-    
-
     console.log(this.login);
   }
 }

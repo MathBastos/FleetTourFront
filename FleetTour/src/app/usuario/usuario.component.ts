@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UsuarioModel } from './model/usuario.model';
 import { UsuarioService } from './service/usuario.service';
+import { HttpClient } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { UsuarioService } from './service/usuario.service';
 
 export class UsuarioComponent {
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService, private http: HttpClient, private router: Router) {}
 
   nome = new FormControl('', 
     [Validators.required]);
@@ -45,16 +47,36 @@ export class UsuarioComponent {
     console.log(this.senha.value);
 
 
-    let usuario = new UsuarioModel();
-    usuario.nome = this.nome.value?.toString();
-    usuario.cpf = this.cpf.value?.toString();
-    usuario.dt_nascimento = this.dt_nascimento.value?.toString();
-    usuario.genero = this.genero.value?.toString();
-    usuario.telefone = this.telefone.value?.toString();
-    usuario.login = this.login.value?.toString();
-    usuario.senha = this.senha.value?.toString();
+    const payload = {
+      nome: this.nome.value?.toString(),
+      cpf: this.cpf.value?.toString(),
+      dt_nascimento: this.dt_nascimento.value?.toString(),
+      genero: this.genero.value?.toString(),
+      telefone: this.telefone.value?.toString(),
+      login: this.login.value?.toString(),
+      senha: this.senha.value?.toString()
+    };
+    const url = 'https://www.fleettour.com.br/usuarios/registrar';
 
-    this.usuarioService.salvar(usuario);
+    this.http.post<UsuarioModel>(url, payload, { observe: 'response' }).subscribe(response => {
+      if (response.status === 200) {
+        this.router.navigate(['/login']);
+      }
+      else {
+        console.log("dados inválidos!");
+      }
+    });
+
+    // let usuario = new UsuarioModel();
+    // usuario.nome = this.nome.value?.toString();
+    // usuario.cpf = this.cpf.value?.toString();
+    // usuario.dt_nascimento = this.dt_nascimento.value?.toString();
+    // usuario.genero = this.genero.value?.toString();
+    // usuario.telefone = this.telefone.value?.toString();
+    // usuario.login = this.login.value?.toString();
+    // usuario.senha = this.senha.value?.toString();
+
+    // this.usuarioService.salvar(usuario);
   }
 
 }

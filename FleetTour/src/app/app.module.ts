@@ -31,6 +31,7 @@ import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.compo
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ViagemComponent } from './viagem/viagem.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -48,6 +49,7 @@ import { ViagemComponent } from './viagem/viagem.component';
     CadastroOnibusComponent,
     CadastroClienteComponent,
     ViagemComponent,
+    AdminComponent,
   ],
   imports: [
     MatListModule,
