@@ -32,6 +32,7 @@ export class LoginComponent {
       this.http.post<LoginModel>(url, payload, { observe: 'response' }).subscribe(response => {
         if (response.status === 200) {
           localStorage.setItem('token', response.body?.token ?? '');
+          console.log(localStorage.getItem('token'));
           this.router.navigate(['/index']);
         }
         else {

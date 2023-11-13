@@ -3,35 +3,35 @@ import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-onibus',
-  templateUrl: './onibus.component.html',
-  styleUrls: ['./onibus.component.css']
+  selector: 'app-listar-viagem',
+  templateUrl: './listar-viagem.component.html',
+  styleUrls: ['./listar-viagem.component.css']
 })
-
-export class OnibusComponent implements OnInit {
+export class ListarViagemComponent implements OnInit{
   public dados: any;
   constructor(private http: HttpClient, private router: Router) { }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
-    const url = 'https://www.fleettour.com.br/veiculos';
+    const url = 'https://www.fleettour.com.br/viagens';
 
     const headers = { 'Authorization': 'Bearer ' + token }
     this.http.get<any>(url, { headers, }).subscribe(response => {
-      this.dados = response; 
+      this.dados = response;
     });
   }
   editar(id: any) {
-    localStorage.setItem('idOnibus', id);
-    this.router.navigate(['/editarOnibus']);
+    localStorage.setItem('idViagem', id);
+    this.router.navigate(['/editarViagem']);
   }
 
-  excluir(id: any){
-    const url = 'https://www.fleettour.com.br/veiculos/'+ id;
+  excluir(id: any) {
+    const url = 'https://www.fleettour.com.br/viagens/' + id;
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': 'Bearer ' + token }
 
-    this.http.delete(url, { headers,}).subscribe(response => {
-      this.router.navigate(['/onibus']);
+    this.http.delete(url, { headers, }).subscribe(response => {
+      this.router.navigate(['/listarViagem']);
     });
   }
+
 }

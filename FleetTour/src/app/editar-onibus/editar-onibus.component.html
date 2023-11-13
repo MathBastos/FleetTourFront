@@ -1,0 +1,27 @@
+<div class="div_botao">
+    <button mat-raised-button type="button" routerLink="/onibus">Voltar</button>
+</div>
+<div class="div_body">
+    <form class="example-form" id="form">
+        <h1>Editar Onibus</h1>
+        
+        <mat-label>Placa</mat-label>
+        <input matInput placeholder="Placa" [formControl]="placa" id="placa">
+
+        <mat-label>Renavam</mat-label>
+        <input matInput placeholder="Renavam" [formControl]="renavam" id="renavam">
+
+        <mat-label>Ano</mat-label>
+        <input matInput placeholder="Ano" [formControl]="ano" id="ano">
+
+        <mat-label>Quilometragem</mat-label>
+        <input matInput placeholder="Quilometragem" [formControl]="quilometragem" id="quilometragem">
+
+        <mat-label>Cod Frota</mat-label>
+        <input matInput placeholder="Cod Frota" [formControl]="codFrota" id="codFrota">
+
+        <mat-label>Capacidade</mat-label>
+        <input matInput placeholder="Capacidade" [formControl]="capacidade" id="capacidade">
+        <button mat-raised-button type="button" (click)="salvar()">Salvar alterações</button>
+    </form>
+</div>

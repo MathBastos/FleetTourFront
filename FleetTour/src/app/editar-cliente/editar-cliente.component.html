@@ -1,10 +1,9 @@
 <div class="div_botao">
-    <button mat-raised-button type="button" routerLink="/indexCliente">Voltar</button>
+    <button mat-raised-button type="button" routerLink="/cliente">Voltar</button>
 </div>
 <div class="div_body">
     <form class="example-form" id="form">
-        <h1>Cadastro Cliente</h1>
- 
+        <h1>Editar Cliente</h1>
             <mat-label>Nome</mat-label>
             <input matInput placeholder="Nome" [formControl]="nome">
 
@@ -13,13 +12,13 @@
 
             <mat-label>RG</mat-label>
             <input matInput placeholder="RG" [formControl]="rg">
-            
+
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="Telefone" [formControl]="telefone">
 
             <mat-label>E-mail</mat-label>
             <input matInput placeholder="Email" [formControl]="email">
-
-        <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
+            
+        <button mat-raised-button type="button" (click)="salvar()">Salvar alterações</button>
     </form>
 </div>

@@ -22,7 +22,6 @@ import {IndexComponent} from './index/index.component';
 import {NgIf, NgFor} from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
 import { OnibusComponent } from './onibus/onibus.component';
-
 import { MatListModule } from '@angular/material/list';
 import { IndexOnibusComponent } from './index-onibus/index-onibus.component';
 import { IndexClienteComponent } from './index-cliente/index-cliente.component';
@@ -32,7 +31,13 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
 import { HttpClientModule } from '@angular/common/http';
 import { ViagemComponent } from './viagem/viagem.component';
 import { AdminComponent } from './admin/admin.component';
-
+import { EditarOnibusComponent } from './editar-onibus/editar-onibus.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { EditarViagemComponent } from './editar-viagem/editar-viagem.component';
+import { ListarViagemComponent } from './listar-viagem/listar-viagem.component';
+import { IndexViagemComponent } from './index-viagem/index-viagem.component';
 
 
 @NgModule({
@@ -50,6 +55,11 @@ import { AdminComponent } from './admin/admin.component';
     CadastroClienteComponent,
     ViagemComponent,
     AdminComponent,
+    EditarOnibusComponent,
+    EditarClienteComponent,
+    EditarViagemComponent,
+    ListarViagemComponent,
+    IndexViagemComponent,
   ],
   imports: [
     MatListModule,
@@ -69,7 +79,9 @@ import { AdminComponent } from './admin/admin.component';
     NgIf,
     NgFor,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

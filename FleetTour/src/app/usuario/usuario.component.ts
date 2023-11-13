@@ -66,17 +66,6 @@ export class UsuarioComponent {
         console.log("dados inválidos!");
       }
     });
-
-    // let usuario = new UsuarioModel();
-    // usuario.nome = this.nome.value?.toString();
-    // usuario.cpf = this.cpf.value?.toString();
-    // usuario.dt_nascimento = this.dt_nascimento.value?.toString();
-    // usuario.genero = this.genero.value?.toString();
-    // usuario.telefone = this.telefone.value?.toString();
-    // usuario.login = this.login.value?.toString();
-    // usuario.senha = this.senha.value?.toString();
-
-    // this.usuarioService.salvar(usuario);
   }
 
 }

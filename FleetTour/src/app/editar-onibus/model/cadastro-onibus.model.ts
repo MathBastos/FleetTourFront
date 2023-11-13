@@ -1,4 +1,5 @@
-export class CadastroOnibusModel {
+export class EditarOnibusModel {
+    idVeiculo?:string;
     placa?:string;
     renavam?:string;
     ano?:string;

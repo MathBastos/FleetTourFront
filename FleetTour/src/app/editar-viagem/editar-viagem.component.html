@@ -3,7 +3,7 @@
 </div>
 <div class="div_body">
     <form class="example-form" id="form">
-        <h1>Cadastro Viagem</h1>
+        <h1>Editar Viagem</h1>
         <table>
             <tr>
                 <td>
@@ -32,19 +32,16 @@
 
                     <mat-label>Onibus</mat-label><br>
                     <mat-select matNativeControl required [formControl]="onibus">
-                        <mat-option *ngFor="let onibus of onibusList" value="{{onibus.idVeiculo}}" [attr.data-empid]="onibus.id" >
-                            {{onibus.placa}}</mat-option>
+                        <mat-option *ngFor="let onibus of onibusList" value="{{onibus.idVeiculo}}" [attr.data-empid]="onibus.id">{{onibus.placa}}</mat-option>
                     </mat-select><br>
-                    
 
                     <mat-label>Passageiro</mat-label><br>
                     <mat-select matNativeControl required [formControl]="passageiro">
-                        <mat-option *ngFor="let passageiro of passageirosList" value="{{passageiro.idPassageiro}}" [attr.data-empid]="passageiro.id">
-                            {{passageiro.cpf}}</mat-option>
+                        <mat-option *ngFor="let passageiro of passageirosList" value="{{passageiro.idPassageiro}}" [attr.data-empid]="passageiro.id">{{passageiro.cpf}}</mat-option>
                     </mat-select><br>
                 </td>
             </tr>
         </table>
-        <button mat-raised-button type="button" (click)="salvar()">Cadastrar</button>
-    </form> 
+        <button mat-raised-button type="button" (click)="salvar()">Salvar Alterações</button>
+    </form>
 </div>

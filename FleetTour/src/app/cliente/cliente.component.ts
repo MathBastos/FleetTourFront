@@ -1,35 +1,42 @@
-import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  posicao: number;
-  nome: string;
-  cpf: string;
-  editar: string;
-  excluir: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { posicao: 1, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 2, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 3, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 4, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 5, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 6, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 7, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 8, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 9, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-  { posicao: 10, nome: 'nome', cpf: 'cpf', editar: 'edit', excluir: 'excluir' },
-];
-
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.component.css']
 })
-export class ClienteComponent {
-  displayedColumns: string[] = ['posicao', 'nome', 'cpf', 'editar', 'excluir'];
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<PeriodicElement>();
+
+export class ClienteComponent implements OnInit {
+  public dados: any;
+  constructor(private http: HttpClient, private router: Router) { }
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    const url = 'https://www.fleettour.com.br/passageiros';
+
+    const headers = { 'Authorization': 'Bearer ' + token }
+    this.http.get<any>(url, { headers, }).subscribe(response => {
+      this.dados = response;
+      console.log(this.dados);
+    });
+    
+  }
+  editar(id: any) {
+    localStorage.setItem('idCliente', id);
+    this.router.navigate(['/editarCliente']);
+  }
+
+  excluir(id: any) {
+    const url = 'https://www.fleettour.com.br/passageiros/' + id;
+    const token = localStorage.getItem('token');
+    const headers = { 'Authorization': 'Bearer ' + token }
+
+    this.http.delete(url, { headers, }).subscribe(response => {
+      this.router.navigate(['/cliente']);
+    });
+  }
+
 }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CadastroClienteModel } from './model/cadastro-cliente.model';
 import { CadastroClienteService } from './service/cadastro-cliente.service';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -10,15 +12,12 @@ import { CadastroClienteService } from './service/cadastro-cliente.service';
 })
 export class CadastroClienteComponent {
 
-  constructor(private cadastroClienteService: CadastroClienteService) { }
+  constructor(private cadastroClienteService: CadastroClienteService, private http: HttpClient, private router: Router) { }
 
   nome = new FormControl('',
     [Validators.required]);
 
   cpf = new FormControl('',
-    [Validators.required]);
-
-  dt_nascimento = new FormControl('',
     [Validators.required]);
 
   telefone = new FormControl('',
@@ -30,56 +29,33 @@ export class CadastroClienteComponent {
   email = new FormControl('',
     [Validators.required]);
   
-  orgaoEmissor = new FormControl('',
-    [Validators.required]);
-
-  cep = new FormControl('',
-    [Validators.required]);
-
-  rua = new FormControl('',
-    [Validators.required]);
-
-  bairro = new FormControl('',
-    [Validators.required]);
-
-  numero = new FormControl('',
-    [Validators.required]);
-
-  complemento = new FormControl('',
-    [Validators.required]);
-
-  estado = new FormControl('',
-    [Validators.required]);
-
-  cidade = new FormControl('',
-    [Validators.required]);
 
   salvar() {
-    console.log(this.nome.value);
-    console.log(this.cpf.value);
-    console.log(this.dt_nascimento.value);
-    console.log(this.telefone.value);
+    const payload = {
+      nome: this.nome.value?.toString(),
+      cpf: this.cpf.value?.toString(),
+      rg: this.rg.value?.toString(),
+      email: this.email.value?.toString(),
+      telefone: this.telefone.value?.toString(),
+      tipo_cliente: "Compras",
+      empresa: {
+        idEmpresa: 1
+      }
+    };
+    const url = 'https://www.fleettour.com.br/passageiros';
 
+    const token = localStorage.getItem('token');
+    const headers = { 'Authorization': 'Bearer ' + token }
 
-    let cliente = new CadastroClienteModel();
-    cliente.nome = this.nome.value?.toString();
-    cliente.cpf = this.cpf.value?.toString();
-    cliente.rg = this.rg.value?.toString();
-    cliente.email = this.email.value?.toString();
-    cliente.orgaoEmissor = this.orgaoEmissor.value?.toString();
-    cliente.dt_nascimento = this.dt_nascimento.value?.toString();
-    cliente.telefone = this.telefone.value?.toString();
-    
-    cliente.cep = this.cep.value?.toString();
-    cliente.rua = this.rua.value?.toString();
-    cliente.bairro = this.bairro.value?.toString();
-    cliente.numero = this.numero.value?.toString();
-    cliente.complemento = this.complemento.value?.toString();
-    cliente.estado = this.estado.value?.toString();
-    cliente.cidade = this.cidade.value?.toString();
-
-
-    this.cadastroClienteService.salvar(cliente);
+    this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
+      if (response.status === 201) {
+        this.router.navigate(['/indexCliente']);
+        console.log("sucesso");
+      }
+      else {
+        console.log("dados inválidos!");
+      }
+    });
   }
 
 }

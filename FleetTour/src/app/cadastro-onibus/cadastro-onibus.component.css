@@ -2,26 +2,24 @@
     font-family: 'Inter', sans-serif;
     padding: 0;
     color: #023047;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
     justify-content: center;
     width: 100%;
-    height: 870px;
+    height: 100vh;
     background-color: #e9e9e9;
 }
 
 #form {
-    width: 700px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
     border-radius: 7px;
     padding: 40px;
     box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-    gap: 5px
 }
 
 #form h1 {

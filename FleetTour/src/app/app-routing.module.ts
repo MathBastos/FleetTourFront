@@ -12,6 +12,11 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
 import { CadastroOnibusComponent } from './cadastro-onibus/cadastro-onibus.component';
 import { ViagemComponent } from './viagem/viagem.component';
 import { AdminComponent } from './admin/admin.component';
+import { EditarOnibusComponent } from './editar-onibus/editar-onibus.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { IndexViagemComponent } from './index-viagem/index-viagem.component';
+import { ListarViagemComponent } from './listar-viagem/listar-viagem.component';
+
 
 
 const routes: Routes = [
@@ -31,6 +36,11 @@ const routes: Routes = [
       { path: 'cadastroOnibus', component: CadastroOnibusComponent },
       { path: 'viagem', component: ViagemComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'editarOnibus', component: EditarOnibusComponent},
+      { path: 'editarCliente', component: EditarClienteComponent},
+      { path: 'indexViagem', component: IndexViagemComponent },
+      { path: 'listarViagem', component: ListarViagemComponent },
+
     ]
   }
 ];

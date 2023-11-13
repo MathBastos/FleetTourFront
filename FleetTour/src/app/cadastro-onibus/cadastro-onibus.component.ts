@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CadastroOnibusModel } from './model/cadastro-onibus.model';
 import { CadastroOnibusService } from './service/cadastro-onibus.service';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro-onibus',
@@ -11,7 +13,7 @@ import { CadastroOnibusService } from './service/cadastro-onibus.service';
 
 export class CadastroOnibusComponent {
 
-  constructor(private cadastroOnibusService: CadastroOnibusService) { }
+  constructor(private cadastroOnibusService: CadastroOnibusService, private http: HttpClient, private router: Router) { }
 
   placa = new FormControl('',
     [Validators.required]);
@@ -31,52 +33,27 @@ export class CadastroOnibusComponent {
   capacidade = new FormControl('',
     [Validators.required]);
 
-  taf = new FormControl('',
-    [Validators.required]);
-
-  refEstadual = new FormControl('',
-    [Validators.required]);
-
-  ultimaVistoria = new FormControl('',
-    [Validators.required]);
-
-  seguro = new FormControl('',
-    [Validators.required]);
-
-  licenciamentoAntt = new FormControl('',
-    [Validators.required]);
-
-  licenciamentoDer = new FormControl('',
-    [Validators.required]);
-
   salvar() {
-    console.log(this.placa.value);
-    console.log(this.renavam.value);
-    console.log(this.ano.value);
-    console.log(this.quilometragem.value);
-    console.log(this.codFrota.value);
-    console.log(this.capacidade.value);
-    console.log(this.taf.value);
-    console.log(this.refEstadual.value);
-    console.log(this.ultimaVistoria.value);
-    console.log(this.seguro.value);
-    console.log(this.licenciamentoAntt.value);
-    console.log(this.licenciamentoDer.value);
-    
-    let onibus = new CadastroOnibusModel();
-    onibus.placa = this.placa.value?.toString();
-    onibus.renavam = this.renavam.value?.toString();
-    onibus.ano = this.ano.value?.toString();
-    onibus.quilometragem = this.quilometragem.value?.toString();
-    onibus.codFrota = this.codFrota.value?.toString();
-    onibus.capacidade = this.capacidade.value?.toString();
-    onibus.taf = this.taf.value?.toString();
-    onibus.refEstadual = this.refEstadual.value?.toString();
-    onibus.ultimaVistoria = this.ultimaVistoria.value?.toString();
-    onibus.seguro = this.seguro.value?.toString();
-    onibus.licenciamentoAntt = this.licenciamentoAntt.value?.toString();
-    onibus.licenciamentoDer = this.licenciamentoDer.value?.toString();
+    const payload = {
+      placa: this.placa.value?.toString(),
+      renavam: this.renavam.value?.toString(),
+      ano: this.ano.value?.toString(),
+      quilometragem: this.quilometragem.value?.toString(),
+      codFrota: this.codFrota.value?.toString(),
+      capacidade: this.capacidade.value?.toString()
+    };
+    const url = 'https://www.fleettour.com.br/veiculos';
 
-    this.cadastroOnibusService.salvar(onibus);
+    const token = localStorage.getItem('token');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    
+    this.http.post<CadastroOnibusModel>(url, payload, { headers, observe: 'response' }).subscribe(response => {
+      if (response.status === 201) {
+        this.router.navigate(['/indexOnibus']);
+      }
+      else {
+        console.log("dados inválidos!");
+      }
+    });
   }
 }

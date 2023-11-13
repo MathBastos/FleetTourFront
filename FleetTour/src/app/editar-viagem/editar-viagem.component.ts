@@ -1,47 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
-
 @Component({
-  selector: 'app-viagem',
-  templateUrl: './viagem.component.html',
-  styleUrls: ['./viagem.component.css']
+  selector: 'app-editar-viagem',
+  templateUrl: './editar-viagem.component.html',
+  styleUrls: ['./editar-viagem.component.css']
 })
-export class ViagemComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) { }
+export class EditarViagemComponent implements OnInit {
 
+  constructor(private http: HttpClient, private router: Router) { }
   public onibusList: any;
   public passageirosList: any;
+  public dados: any;
 
-  dataViagem = new FormControl('',
+  public dataViagem = new FormControl('',
     [Validators.required]);
 
-  valor = new FormControl('',
+  public valor = new FormControl('',
     [Validators.required]);
 
-  observacao = new FormControl('',
+  public observacao = new FormControl('',
     []);
 
-  destino = new FormControl('',
+  public destino = new FormControl('',
     [Validators.required]);
 
-  origem = new FormControl('',
+  public origem = new FormControl('',
     [Validators.required]);
-  
-  km = new FormControl('',
-    []);
-    
-  passageiro = new FormControl('',
+
+  public km = new FormControl('',
     []);
 
-  onibus = new FormControl('',
+  public passageiro = new FormControl('',
+    [Validators.required]);
+
+  public onibus = new FormControl('',
     [Validators.required]);
 
 
   ngOnInit(): void {
+    const id = localStorage.getItem('idViagem')
     const token = localStorage.getItem('token');
     const url = 'https://www.fleettour.com.br/veiculos';
 
@@ -56,9 +56,22 @@ export class ViagemComponent implements OnInit {
     this.http.get<any>(url2, { headers, }).subscribe(response => {
       this.passageirosList = response;
     });
+
+    const url3 = 'https://www.fleettour.com.br/viagens/' + id;
+    this.http.get<any>(url3, { headers, }).subscribe(response => {
+      this.dados = response;
+
+      this.dataViagem.setValue(this.dados.dataViagem);
+      this.valor.setValue(this.dados.valor);
+      this.observacao.setValue(this.dados.observacao);
+      this.destino.setValue(this.dados.destino);
+      this.origem.setValue(this.dados.origem);
+      this.km.setValue(this.dados.km);
+    });
   }
 
   salvar() {
+
     const payload = {
       dataViagem: this.dataViagem.value?.toString(),
       valor: this.valor.value?.toString(),
@@ -78,18 +91,19 @@ export class ViagemComponent implements OnInit {
       empresa: {
         idEmpresa: 1
       },
-      Contratante:{
+      Contratante: {
         idContratante: 1
       }
     };
 
-    const url = 'https://www.fleettour.com.br/viagens';
+    const id = localStorage.getItem('idViagem')
+    const url = 'https://www.fleettour.com.br/viagens' + id;
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': 'Bearer ' + token }
-      
-      this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
-      if (response.status === 201) {
-        this.router.navigate(['/indexOnibus']);
+
+    this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
+      if (response.status === 200) {
+        this.router.navigate(['/indexViagem']);
       }
       else {
         console.log("dados inválidos!");
