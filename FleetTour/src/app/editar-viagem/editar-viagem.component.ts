@@ -15,9 +15,6 @@ export class EditarViagemComponent implements OnInit {
   public passageirosList: any;
   public dados: any;
 
-  public dataViagem = new FormControl('',
-    [Validators.required]);
-
   public valor = new FormControl('',
     [Validators.required]);
 
@@ -48,8 +45,6 @@ export class EditarViagemComponent implements OnInit {
     const headers = { 'Authorization': 'Bearer ' + token }
     this.http.get<any>(url, { headers, }).subscribe(response => {
       this.onibusList = response;
-
-
     });
 
     const url2 = 'https://www.fleettour.com.br/passageiros';
@@ -61,7 +56,6 @@ export class EditarViagemComponent implements OnInit {
     this.http.get<any>(url3, { headers, }).subscribe(response => {
       this.dados = response;
 
-      this.dataViagem.setValue(this.dados.dataViagem);
       this.valor.setValue(this.dados.valor);
       this.observacao.setValue(this.dados.observacao);
       this.destino.setValue(this.dados.destino);
@@ -72,36 +66,41 @@ export class EditarViagemComponent implements OnInit {
 
   salvar() {
 
+    const id = Number(localStorage.getItem('idViagem'));
+
+
+    const idPassageiro = Number(this.passageiro.value);
+    const idFuncionario = 1;
+    
     const payload = {
-      dataViagem: this.dataViagem.value?.toString(),
-      valor: this.valor.value?.toString(),
+      idViagem: id,
+      valor: Number(this.valor.value),
       observacao: this.observacao.value?.toString(),
       destino: this.destino.value?.toString(),
       origem: this.origem.value?.toString(),
-      km: this.km.value?.toString(),
-      passageiros: {
-        idPassageiro: this.passageiro.value?.toString()
-      },
+      km: Number(this.km.value),
+      passageiros: [
+        idPassageiro]
+      ,
       veiculo: {
-        idVeiculo: this.onibus.value?.toString()
+        idVeiculo: Number(this.onibus.value)
       },
-      funcionarios: {
-        idFuncionario: 1
-      },
+      funcionarios: [
+        idFuncionario]
+      ,
       empresa: {
         idEmpresa: 1
       },
-      Contratante: {
-        idContratante: 1
+      contratante:{
+        idContratante: 2
       }
     };
 
-    const id = localStorage.getItem('idViagem')
-    const url = 'https://www.fleettour.com.br/viagens' + id;
+    const url = 'https://www.fleettour.com.br/viagens/' + id;
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': 'Bearer ' + token }
 
-    this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
+    this.http.put<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
       if (response.status === 200) {
         this.router.navigate(['/indexViagem']);
       }

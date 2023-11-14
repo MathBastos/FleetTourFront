@@ -8,16 +8,13 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-viagem',
   templateUrl: './viagem.component.html',
-  styleUrls: ['./viagem.component.css']
+  styleUrls: ['./viagem.component.css'],
 })
 export class ViagemComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   public onibusList: any;
   public passageirosList: any;
-
-  dataViagem = new FormControl('',
-    [Validators.required]);
 
   valor = new FormControl('',
     [Validators.required]);
@@ -58,28 +55,32 @@ export class ViagemComponent implements OnInit {
     });
   }
 
+  
   salvar() {
+
+    const idPassageiro = Number(this.passageiro.value);
+    const idFuncionario = 1;
+    
     const payload = {
-      dataViagem: this.dataViagem.value?.toString(),
-      valor: this.valor.value?.toString(),
+      valor: Number(this.valor.value),
       observacao: this.observacao.value?.toString(),
       destino: this.destino.value?.toString(),
       origem: this.origem.value?.toString(),
-      km: this.km.value?.toString(),
-      passageiros: {
-        idPassageiro: this.passageiro.value?.toString()
-      },
+      km: Number(this.km.value),
+      passageiros: [
+        idPassageiro]
+      ,
       veiculo: {
-        idVeiculo: this.onibus.value?.toString()
+        idVeiculo: Number(this.onibus.value)
       },
-      funcionarios: {
-        idFuncionario: 1
-      },
+      funcionarios: [
+        idFuncionario]
+      ,
       empresa: {
         idEmpresa: 1
       },
-      Contratante:{
-        idContratante: 1
+      contratante:{
+        idContratante: 2
       }
     };
 
@@ -89,7 +90,7 @@ export class ViagemComponent implements OnInit {
       
       this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
       if (response.status === 201) {
-        this.router.navigate(['/indexOnibus']);
+        this.router.navigate(['/indexViagem']);
       }
       else {
         console.log("dados inválidos!");

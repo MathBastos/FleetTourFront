@@ -61,14 +61,15 @@ export class EditarClienteComponent implements OnInit {
         idEmpresa: 1
       }
     };
-    
-    const url = 'https://www.fleettour.com.br/passageiros/'+ id;
+    const url = 'https://www.fleettour.com.br/passageiros/' + id;
+
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': 'Bearer ' + token }
 
     this.http.put<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
       if (response.status === 200) {
-        this.router.navigate(['/indexCliente']);
+        this.router.navigate(['/cliente']);
+        console.log("sucesso");
       }
       else {
         console.log("dados inválidos!");

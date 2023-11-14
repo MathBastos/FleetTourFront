@@ -5,16 +5,16 @@
     <div class="div_table">
         <table class="mat-elevation-z8 demo-table">
             <tr>
-                <th>Data</th>
                 <th>Origem</th>
                 <th>Destino</th>
+                <th>Valor</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
             <tr *ngFor="let dado of dados">
-                <td>{{dado.dataViagem}}</td>
                 <td>{{dado.origem}}</td>
                 <td>{{dado.destino}}</td>
+                <td>{{dado.valor}}</td>
                 <td><button type="button" (click)="editar(dado.idViagem)"><mat-icon>edit</mat-icon></button></td>
                 <td><button type="button" (click)="excluir(dado.idViagem)"><mat-icon>delete_forever</mat-icon></button>
                 </td>

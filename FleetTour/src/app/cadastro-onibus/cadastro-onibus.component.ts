@@ -40,14 +40,17 @@ export class CadastroOnibusComponent {
       ano: this.ano.value?.toString(),
       quilometragem: this.quilometragem.value?.toString(),
       codFrota: this.codFrota.value?.toString(),
-      capacidade: this.capacidade.value?.toString()
+      capacidade: this.capacidade.value?.toString(),
+      empresa: {
+        idEmpresa: 1
+      }
     };
     const url = 'https://www.fleettour.com.br/veiculos';
 
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': 'Bearer ' + token }
     
-    this.http.post<CadastroOnibusModel>(url, payload, { headers, observe: 'response' }).subscribe(response => {
+    this.http.post<any>(url, payload, { headers, observe: 'response' }).subscribe(response => {
       if (response.status === 201) {
         this.router.navigate(['/indexOnibus']);
       }

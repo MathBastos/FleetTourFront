@@ -34,7 +34,7 @@ export class ClienteComponent implements OnInit {
     const headers = { 'Authorization': 'Bearer ' + token }
 
     this.http.delete(url, { headers, }).subscribe(response => {
-      this.router.navigate(['/cliente']);
+      window.location.reload();
     });
   }
 

@@ -60,7 +60,10 @@ export class EditarOnibusComponent implements OnInit {
       ano: this.ano.value?.toString(),
       quilometragem: this.quilometragem.value?.toString(),
       codFrota: this.codFrota.value?.toString(),
-      capacidade: this.capacidade.value?.toString()
+      capacidade: this.capacidade.value?.toString(),
+      empresa: {
+        idEmpresa: 1
+      }
     };
     const url = 'https://www.fleettour.com.br/veiculos/' + id;
     const token = localStorage.getItem('token');
@@ -68,7 +71,7 @@ export class EditarOnibusComponent implements OnInit {
     
     this.http.put<EditarOnibusModel>(url, payload, { headers, observe: 'response' }).subscribe(response => {
       if (response.status === 200) {
-        this.router.navigate(['/Onibus']);
+        this.router.navigate(['/onibus']);
       }
       else {
         console.log(response);

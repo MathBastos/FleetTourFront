@@ -16,6 +16,7 @@ import { EditarOnibusComponent } from './editar-onibus/editar-onibus.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { IndexViagemComponent } from './index-viagem/index-viagem.component';
 import { ListarViagemComponent } from './listar-viagem/listar-viagem.component';
+import { EditarViagemComponent } from './editar-viagem/editar-viagem.component';
 
 
 
@@ -40,7 +41,7 @@ const routes: Routes = [
       { path: 'editarCliente', component: EditarClienteComponent},
       { path: 'indexViagem', component: IndexViagemComponent },
       { path: 'listarViagem', component: ListarViagemComponent },
-
+      { path: 'editarViagem', component: EditarViagemComponent },
     ]
   }
 ];

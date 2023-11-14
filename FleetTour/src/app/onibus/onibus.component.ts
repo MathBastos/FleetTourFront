@@ -31,7 +31,7 @@ export class OnibusComponent implements OnInit {
     const headers = { 'Authorization': 'Bearer ' + token }
 
     this.http.delete(url, { headers,}).subscribe(response => {
-      this.router.navigate(['/onibus']);
+      window.location.reload();
     });
   }
 }
